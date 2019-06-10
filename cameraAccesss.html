@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.inlin{
+		display: inline-block;
+		border: 3px solid grey;
+	}
+	a{
+		color: blue;
+	}
+	</style>
+</head>
+<body>
+	<div class="inlin">
+		<video id="video" width="550" height="480" autoplay></video>
+	</div>
+		<div class="inlin">
+			<canvas id="canvas" width="550" height="480"></canvas>
+		</div><br>
+		<button id="snap">captuere</button>
+		<div class="mylinks">
+			<table>
+				<tr>
+					<td>GitHub : </td>
+					<td><a href="https://github.com/DhFernando">
+						github.com/DhFernando
+					</a></td>
+				</tr>
+				<tr>
+					<td>LinkedIn</td>
+					<td>
+						<a href="https://www.linkedin.com/in/dilshan-fernando-46b198173">
+							www.linkedin.com/in/dilshan-fernando
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td>G-mail :</td>
+					<td>hdilshan.fernando11@gmail.com</td>
+				</tr>
+			</table>
+		</div>
+	<script>
+		var video = document.getElementById('video');
+
+		// Get access to the camera!
+		if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+		    navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {        
+		        video.srcObject = stream;
+		        video.play();
+		    });
+		}
+
+		var canvas = document.getElementById('canvas');
+		var context = canvas.getContext('2d');
+		var video = document.getElementById('video');
+
+		// Trigger photo take
+		document.getElementById("snap").addEventListener("click", function() {
+			context.drawImage(video, 0, 0, 550, 480);
+		});
+	</script>
+</body>
+</html
